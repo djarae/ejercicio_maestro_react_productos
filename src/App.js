@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState,useEffect } from 'react';import './App.css';import Login from './components/login/Login.js';import Home from './components/home/Home.js';
 function App() {
+  const [hookUsuarioActivo, setHookUsuarioActivo] = useState(null);
+  useEffect(() => {
+    console.log((localStorage.getItem("usuarioActivo")))
+    if (((localStorage.getItem("usuarioActivo"))===null) 
+       ){
+         setHookUsuarioActivo("false");
+       }else{
+        setHookUsuarioActivo("true");
+       }
+  });    
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {(hookUsuarioActivo=="true") &&
+         <Home></Home> 
+       }
+       {(hookUsuarioActivo=="false") &&
+         <Login></Login> 
+       }
     </div>
   );
 }
