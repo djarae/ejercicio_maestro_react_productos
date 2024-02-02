@@ -1,16 +1,66 @@
-// import Button from '@mui/material/Button';
+import './Login.css';
+import axios from "axios";
 function Login() {
+
+  const apiURL= "http://127.0.0.1:8000/loginParametro?nombre=PepeReact&contrasena=qiqi"//API URL Cloud
     
+
+
     function iniciarSesion (){
-        //Aqui debemos hacer un if que consulte en BD si el usuario y pass es correcto ,
-        //si lo es cargamos el ID usuario y lo guardamos en localStorage
         localStorage.setItem("usuarioActivo",true)
         localStorage.setItem("nombre","Diego")
-        alert( "Has guardado tu nombre es :" + localStorage.getItem("nombre") + ".   Usuario activo es " +  localStorage.getItem("usuarioActivo"))
-        window.location.href = window.location.href;
-        window.location.replace('');
+
+
+        axios.get(apiURL, { withCredentials: true })
+        .then(function (response) {
+            // handle success
+            console.log("funciona!");
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function (response) {
+          console.log("Esto es then");
+        });
+
+        
+  
+        alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
+        // window.location.href = window.location.href;
         return 0;
       }
+
+
+    function crearUsuario (){
+        axios.get('http://127.0.0.1:8000/login', { withCredentials: true })
+        .then(function (response) {
+            // handle success
+            console.log("funciona!");
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
+
+        return 0;
+      }  
+
+
+      // Notifies the server about the change
+      // const notifyServer = () => {
+      //   axios.post('/testInsert', {
+      //       message: 'Counter Updated!',
+      //   })
+      // }
+
+    
+
 
     return (
       <div className="App">
@@ -24,7 +74,7 @@ function Login() {
           </p>
          </div >
         </header>
-        <body>
+        <body className="App-body">
          <h1>
           Iniciar sesion
          </h1>
@@ -36,6 +86,9 @@ function Login() {
          </div>
          <button onClick={iniciarSesion}>
             Ingresar 
+         </button>
+         <button onClick={crearUsuario}>
+            Crear Usuario 
          </button>
         </body>
       </div>

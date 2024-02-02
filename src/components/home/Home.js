@@ -2,7 +2,7 @@
 function Home() {
     function cerrarSesion (){
         localStorage.clear()
-        alert("Termino todo")
+        alert("Se ha cerrado sesion")
         window.location.href = window.location.href;
         window.location.replace('');
         return 0;
@@ -14,7 +14,7 @@ function Home() {
         <header className="App-header">
           <div>
             <h1>
-             Home
+             Seleccione el "Registro de articulos" o "Configuracion de usuarios"
             </h1>
             <button onClick={cerrarSesion}>
              Cerrar Sesion 
