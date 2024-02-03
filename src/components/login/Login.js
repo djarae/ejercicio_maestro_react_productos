@@ -20,33 +20,41 @@ function Login() {
   };
 
     function iniciarSesion (){
-        localStorage.setItem("usuarioActivo",true)
-        localStorage.setItem("nombre","Diego")
+        console.log("iniciar ses")
 
-        let usuarioAuxiliar =''
+        let usuarioAuxiliar =''//De esta forma hacemos que el hook se considere STRING
         let contrasenaAuxiliar =''
-
         usuarioAuxiliar=hookTxtUsuario;
         contrasenaAuxiliar=hookTxtContrasena;
 
-
-
+        //CUIDADO CON LA ASINCRONIA AQUI ,SE CIERRA LA FUNCION ANTES DE TERMINAR
         axios.get("http://127.0.0.1:8000/login?nombre='"+usuarioAuxiliar+"'&contrasena='"+contrasenaAuxiliar+"'", { withCredentials: true })
         .then(function (response) {
             // handle success
-            console.log("funciona!");
+            console.log("funciona! l RESPONSE ES ");
             console.log(response);
+            localStorage.setItem("usuarioActivo",true)
+            localStorage.setItem("nombre","Diego")
+            var values = response.data
+            console.log("values de response");console.log(values)
+            alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
+          
+            window.location.href = window.location.href;
         })
         .catch(function (error) {
             // handle error
+            console.log("no funciona!");
             console.log(error);
+            console.log("Usuario no encontrado desde js");
         })
         .then(function (response) {
           console.log("Esto es then");
         });
+
+
+      
   
-        alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
-        // window.location.href = window.location.href;
+     
         return 0;
       }
 
