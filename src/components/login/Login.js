@@ -1,17 +1,37 @@
 import './Login.css';
 import axios from "axios";
+import {useState} from 'react';
 function Login() {
 
-  const apiURL= "http://127.0.0.1:8000/loginParametro?nombre=PepeReact&contrasena=qiqi"//API URL Cloud
-    
 
+  const [hookTxtUsuario, setHookTxtUsuario] = useState('');
+  const [hookTxtContrasena, setHookTxtContrasena] = useState('');
+
+  const handleChangeUsuario = event => {
+    setHookTxtUsuario(event.target.value);
+    console.log("valor user ");
+    console.log(hookTxtUsuario);
+  };
+  
+  const handleChangeContrasena = event => {
+    setHookTxtContrasena(event.target.value);
+    console.log("valor contr ");
+    console.log(hookTxtContrasena);
+  };
 
     function iniciarSesion (){
         localStorage.setItem("usuarioActivo",true)
         localStorage.setItem("nombre","Diego")
 
+        let usuarioAuxiliar =''
+        let contrasenaAuxiliar =''
 
-        axios.get(apiURL, { withCredentials: true })
+        usuarioAuxiliar=hookTxtUsuario;
+        contrasenaAuxiliar=hookTxtContrasena;
+
+
+
+        axios.get("http://127.0.0.1:8000/login?nombre='"+usuarioAuxiliar+"'&contrasena='"+contrasenaAuxiliar+"'", { withCredentials: true })
         .then(function (response) {
             // handle success
             console.log("funciona!");
@@ -24,8 +44,6 @@ function Login() {
         .then(function (response) {
           console.log("Esto es then");
         });
-
-        
   
         alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
         // window.location.href = window.location.href;
@@ -51,17 +69,6 @@ function Login() {
         return 0;
       }  
 
-
-      // Notifies the server about the change
-      // const notifyServer = () => {
-      //   axios.post('/testInsert', {
-      //       message: 'Counter Updated!',
-      //   })
-      // }
-
-    
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -78,12 +85,33 @@ function Login() {
          <h1>
           Iniciar sesion
          </h1>
-         <div>
-          <input  id="inpUsuario" class="form-control"></input>
-         </div>
-         <div>
-          <input  id="inpContrasena" class="form-control"></input>
-         </div>
+       <div>
+        <input
+          type="text"
+          id="txtUsuario"
+          name="hookTxtUsuario"
+          onChange={handleChangeUsuario}
+          value={hookTxtUsuario}
+        />
+        <h2>Message: {hookTxtUsuario}</h2>
+      </div>
+
+
+      <div>
+        <input
+          type="text"
+          id="txtContrasena"
+          name="hookTxtContrasena"
+          onChange={handleChangeContrasena}
+          value={hookTxtContrasena}
+        />
+        <h2>Message: {hookTxtContrasena}</h2>
+      </div>
+
+
+
+
+
          <button onClick={iniciarSesion}>
             Ingresar 
          </button>
