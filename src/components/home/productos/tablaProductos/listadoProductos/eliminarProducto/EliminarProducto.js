@@ -8,7 +8,7 @@ function EliminarProducto() {
     return (
       <div>
        <Popup trigger=
-          {<button> Eliminar Producto </button>}
+          {<button>Eliminar</button>}
           position="right center">  
           <div>¿Esta seguro que desea eliminar el producto?</div>
           <button>Eliminar</button>

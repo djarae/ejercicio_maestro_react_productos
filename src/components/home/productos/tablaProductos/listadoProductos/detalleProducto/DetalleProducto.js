@@ -6,11 +6,9 @@ function DetalleProducto() {
     return (
       <div>
        <Popup trigger=
-          {<button> Detalle Producto </button>}
+          {<button >Detalle</button>}
           position="right center">  
-          <div>Detalle Producto</div>
-     
-      
+          <div>Detalle Producto</div>      
        </Popup>
       </div>
     );

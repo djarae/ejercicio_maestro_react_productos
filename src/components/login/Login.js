@@ -115,10 +115,6 @@ function Login() {
         <h2>Message: {hookTxtContrasena}</h2>
       </div>
 
-
-
-
-
          <button onClick={iniciarSesion}>
             Ingresar 
          </button>

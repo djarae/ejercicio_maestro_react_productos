@@ -3,7 +3,7 @@
         "id":1,
         "nombre":"Lapiz",
         "detalle":  "Util muy util",
-        "stock":20
+        "stock":10
     },
     {
         "id":2,
@@ -12,9 +12,71 @@
         "stock":50
     },
     {
-        "id":3,
-        "nombre":"Mouse",
-        "detalle":  "Piola es util",
-        "stock":60
+        "id":4,
+        "nombre":"Mario Party 3",
+        "detalle":  "Cool",
+        "stock":10
     }
+    ,
+    {
+        "id":5,
+        "nombre":"Metroid Prime Corruption",
+        "detalle":  "Cool",
+        "stock":10
+    }
+    ,
+    {
+        "id":6,
+        "nombre":"Mario World",
+        "detalle":  "Roja",
+        "stock":10
+    }
+    ,
+    {
+        "id":7,
+        "nombre":"Cosplay",
+        "detalle":  "Completo pues",
+        "stock":20
+    }
+    ,
+    {
+        "id":8,
+        "nombre":"Mario 3D All Stars",
+        "detalle":  "Nuevo",
+        "stock":30
+    }
+    ,
+    {
+        "id":9,
+        "nombre":"Nintendo Switch",
+        "detalle":  "Version Lets Go ",
+        "stock":20
+    }
+    ,
+    {
+        "id":10,
+        "nombre":"Metroid Prime Remastered",
+        "detalle":  "Nuevo-Sellado",
+        "stock":30
+    }
+    ,
+    {
+        "id":11,
+        "nombre":"Mario Oddysei",
+        "detalle":  "Usado poco uso",
+        "stock":30
+    } ,
+    {
+        "id":12,
+        "nombre":"Metroid Prime Echoes",
+        "detalle":  "Nuevo selladisimo",
+        "stock":10
+    } ,
+    {
+        "id":13,
+        "nombre":"Metroid Fusion",
+        "detalle":  "Usado poco uso",
+        "stock":10
+    }
+
 ]

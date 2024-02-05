@@ -29,7 +29,7 @@ function ActualizarProducto() {
     return (
       <div>
        <Popup trigger=
-          {<button> Actualizar Producto </button>}
+          {<button>Actualizar</button>}
           position="right center">  
           <div>Actualizar Producto</div>
 
