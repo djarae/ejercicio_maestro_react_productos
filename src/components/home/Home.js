@@ -1,4 +1,7 @@
 // import Button from '@mui/material/Button';
+import Productos from './productos/Productos.js';
+// import Usuarios from './usuarios/Usuarios.js';
+
 function Home() {
     function cerrarSesion (){
         localStorage.clear()
@@ -8,14 +11,13 @@ function Home() {
         return 0;
       }
 
-
     return (
       <div className="App">
         <header className="App-header">
           <div>
-            <h1>
-             Seleccione el "Registro de articulos" o "Configuracion de usuarios"
-            </h1>
+            <h3>HOME</h3>
+            <Productos></Productos> 
+            {/* <Usuarios></Usuarios>  */}
             <button onClick={cerrarSesion}>
              Cerrar Sesion 
             </button>

@@ -1,23 +1,23 @@
 import './Login.css';
 import axios from "axios";
-import {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+
+
 function Login() {
-
-
   const [hookTxtUsuario, setHookTxtUsuario] = useState('');
   const [hookTxtContrasena, setHookTxtContrasena] = useState('');
 
-  const handleChangeUsuario = event => {
-    setHookTxtUsuario(event.target.value);
-    console.log("valor user ");
-    console.log(hookTxtUsuario);
-  };
+    const handleChangeUsuario = event => {
+      setHookTxtUsuario(event.target.value);
+      console.log("valor user ");
+      console.log(hookTxtUsuario);
+    };
   
-  const handleChangeContrasena = event => {
-    setHookTxtContrasena(event.target.value);
-    console.log("valor contr ");
-    console.log(hookTxtContrasena);
-  };
+    const handleChangeContrasena = event => {
+      setHookTxtContrasena(event.target.value);
+      console.log("valor contr ");
+      console.log(hookTxtContrasena);
+    };
 
     function iniciarSesion (){
         console.log("iniciar ses")
@@ -53,11 +53,10 @@ function Login() {
 
 
       
-  
-     
+
+      
         return 0;
       }
-
 
     function crearUsuario (){
         axios.get('http://127.0.0.1:8000/login', { withCredentials: true })

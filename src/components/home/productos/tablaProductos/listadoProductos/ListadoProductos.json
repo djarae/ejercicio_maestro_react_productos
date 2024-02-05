@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "nombre":"Lapiz",
+        "detalle":  "Util muy util",
+        "stock":20
+    },
+    {
+        "id":2,
+        "nombre":"Borrador",
+        "detalle":  "Cool ayuda",
+        "stock":50
+    },
+    {
+        "id":3,
+        "nombre":"Mouse",
+        "detalle":  "Piola es util",
+        "stock":60
+    }
+]
