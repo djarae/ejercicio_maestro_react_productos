@@ -4,9 +4,9 @@ import ListadoProductos from './listadoProductos/ListadoProductos.js'
 
 function TablaProductos() {
     const [Paginacion, setPaginacion] = useState(1);
+    const [filtroActivo, setFiltroActivo] = useState(0);
     const [hookFiltroNProducto, setHookFiltroNProducto] = useState('');
     const [hookFiltroSProducto, setHookFiltroSProducto] = useState('');
-
 
     function paginaMenos (){
       if (Paginacion>1){
@@ -22,11 +22,32 @@ function TablaProductos() {
 
     const changeFiltroNProducto = event => {
       setHookFiltroNProducto(event.target.value);
+      setFiltroActivo(0)
+      //Nota: Se cambia "FiltroActivo" a 0 , ya que para poder establecer un "limite 
+      //maximo de 5 filtrados hacia falta que existiese un boton y que sea por medio de boton"
     };
 
     const changeFiltroSProducto = event => {
       setHookFiltroSProducto(event.target.value);
+      setFiltroActivo(0)
+
     };
+
+    function activarFiltros (){
+      setFiltroActivo(1)
+      var intLFiltro = parseInt(  localStorage.getItem("limiteFiltros"));
+      var auxLFiltro = intLFiltro+1
+      localStorage.setItem("limiteFiltros",auxLFiltro)
+      console.log("Limite filtros");console.log(localStorage.getItem("limiteFiltros"))
+      if (auxLFiltro>4){
+        setFiltroActivo(0)
+        alert("Limite de 5 filtros por sesión alcanzado.")
+      }
+    }
+
+    function desactivarFiltros (){
+      setFiltroActivo(0)
+    }
 
 
     return (
@@ -36,7 +57,7 @@ function TablaProductos() {
           <thead class="thead-light"> 
             <tr>
                 <th>
-                  <button >Filtrar</button>
+                  <button onClick={activarFiltros}>Filtrar</button>
                 </th>
                 <th scope="col"> 
                           <input type="text" id="txtFiltroNProducto" name="hookFiltroNProducto" onChange={changeFiltroNProducto} value={hookFiltroNProducto}/>
@@ -46,6 +67,9 @@ function TablaProductos() {
                           <input type="text" id="txtFiltroSProducto" name="hookFiltroSProducto" onChange={changeFiltroSProducto} value={hookFiltroSProducto}/>
                           {/* <h2>: {hookFiltroSProducto}</h2> */}
                 </th>
+                <th>
+                  <button onClick={desactivarFiltros}>Retirar Filtro</button>
+                </th>
             </tr>
             <tr>
              <th scope="col">#</th>
@@ -53,7 +77,7 @@ function TablaProductos() {
              <th scope="col">Stock</th>
             </tr>
           </thead>
-          <ListadoProductos paginacion={Paginacion} filtroNombre={hookFiltroNProducto} filtroStock={hookFiltroSProducto}></ListadoProductos>
+          <ListadoProductos paginacion={Paginacion} filtroNombre={hookFiltroNProducto} filtroStock={hookFiltroSProducto} filtroActivo={filtroActivo}></ListadoProductos>
         </table>
         <div>
           <tr>

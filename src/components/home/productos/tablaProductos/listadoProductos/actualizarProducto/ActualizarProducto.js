@@ -41,7 +41,7 @@ function ActualizarProducto() {
               onChange={handleChangeNProducto}
               value={hookTxtNProducto}
           />
-          <h2>Message: {hookTxtNProducto}</h2>
+          {/* <h2>Message: {hookTxtNProducto}</h2> */}
 
           <p>Detalle</p>
           <input
@@ -51,7 +51,7 @@ function ActualizarProducto() {
               onChange={handleChangeDProducto}
               value={hookTxtDProducto}
           />
-          <h2>Message: {hookTxtDProducto}</h2>
+          {/* <h2>Message: {hookTxtDProducto}</h2> */}
 
           <p>Stock</p>
           <input
@@ -61,7 +61,7 @@ function ActualizarProducto() {
               onChange={handleChangeSProducto}
               value={hookTxtSProducto}
           />
-          <h2>Message: {hookTxtSProducto}</h2>
+          {/* <h2>Message: {hookTxtSProducto}</h2> */}
           <button>Actualizar</button>
        </Popup>
       </div>

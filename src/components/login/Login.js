@@ -20,8 +20,6 @@ function Login() {
     };
 
     function iniciarSesion (){
-        console.log("iniciar ses")
-
         let usuarioAuxiliar =''//De esta forma hacemos que el hook se considere STRING
         let contrasenaAuxiliar =''
         usuarioAuxiliar=hookTxtUsuario;
@@ -33,8 +31,10 @@ function Login() {
             // handle success
             console.log("funciona! l RESPONSE ES ");
             console.log(response);
+            var auxLimiteFiltro=0//Se utiliza asi para que sea integer
             localStorage.setItem("usuarioActivo",true)
             localStorage.setItem("nombre","Diego")
+            localStorage.setItem("limiteFiltros",auxLimiteFiltro)
             var values = response.data
             console.log("values de response");console.log(values)
             alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
@@ -50,29 +50,11 @@ function Login() {
         .then(function (response) {
           console.log("Esto es then");
         });
-
-
-      
-
       
         return 0;
       }
 
     function crearUsuario (){
-        axios.get('http://127.0.0.1:8000/login', { withCredentials: true })
-        .then(function (response) {
-            // handle success
-            console.log("funciona!");
-            console.log(response);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        });
-
         return 0;
       }  
 
@@ -102,7 +84,6 @@ function Login() {
         />
         <h2>Message: {hookTxtUsuario}</h2>
       </div>
-
 
       <div>
         <input
