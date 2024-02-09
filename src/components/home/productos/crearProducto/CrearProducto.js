@@ -1,29 +1,35 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, { useState } from 'react';
-
+import getNextProducto from "./HTTP/GetNextProducto";
+import insertarProducto from "./HTTP/InsertarProducto";
 
 function CrearProducto() {
   const [hookTxtNProducto, setHookTxtNProducto] = useState('');
   const [hookTxtDProducto, setHookTxtDProducto] = useState('');
   const [hookTxtSProducto, setHookTxtSProducto] = useState('');
-
-    const handleChangeNProducto = event => {
+  const handleChangeNProducto = event => {
       setHookTxtNProducto(event.target.value);
       console.log("valor user ");
       console.log(hookTxtNProducto);
     };
-    
-    const handleChangeDProducto = event => {
+  const handleChangeDProducto = event => {
       setHookTxtDProducto(event.target.value);
       console.log("valor user ");
       console.log(hookTxtDProducto);
     };
-     
-    const handleChangeSProducto = event => {
+  const handleChangeSProducto = event => {
       setHookTxtSProducto(event.target.value);
       console.log("valor user ");
       console.log(hookTxtSProducto);
+    };
+
+  const   CrearProducto =   async event => {
+      // console.log("NOMBRE PRODUCTO: ");console.log(hookTxtNProducto); console.log("DETALLE PRODUCTO: ");console.log(hookTxtDProducto);console.log("STOCK PRODUCTO: ");console.log(hookTxtSProducto);
+      let idNextProducto = await getNextProducto();
+      // console.log("id next  p");console.log(idNextProducto)
+      insertarProducto(idNextProducto,hookTxtNProducto,hookTxtDProducto,hookTxtSProducto);
+      return 0;
     };
 
     return (
@@ -63,7 +69,7 @@ function CrearProducto() {
               value={hookTxtSProducto}
           />
           <h2>Message: {hookTxtSProducto}</h2>
-          <button>Crear</button>
+          <button onClick={CrearProducto}>Crear</button>
        </Popup>
       </div>
     );

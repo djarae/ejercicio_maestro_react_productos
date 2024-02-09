@@ -1,8 +1,6 @@
 import './Login.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-
-
 function Login() {
   const [hookTxtUsuario, setHookTxtUsuario] = useState('');
   const [hookTxtContrasena, setHookTxtContrasena] = useState('');
@@ -82,7 +80,7 @@ function Login() {
           onChange={handleChangeUsuario}
           value={hookTxtUsuario}
         />
-        <h2>Message: {hookTxtUsuario}</h2>
+        {/* <h2>Message: {hookTxtUsuario}</h2> */}
       </div>
 
       <div>
@@ -93,7 +91,7 @@ function Login() {
           onChange={handleChangeContrasena}
           value={hookTxtContrasena}
         />
-        <h2>Message: {hookTxtContrasena}</h2>
+        {/* <h2>Message: {hookTxtContrasena}</h2> */}
       </div>
 
          <button onClick={iniciarSesion}>
