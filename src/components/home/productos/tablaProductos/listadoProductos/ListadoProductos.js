@@ -1,56 +1,52 @@
-import ListadoProductosJson from './ListadoProductos.json'
-import DetalleProducto from './detalleProducto/DetalleProducto'
-import ActualizarProducto from './actualizarProducto/ActualizarProducto'
-import EliminarProducto from './eliminarProducto/EliminarProducto'
-
-
+// // import ListadoProductosJson from './ListadoProductos.json'
+// import DetalleProducto from './detalleProducto/DetalleProducto'
+// import ActualizarProducto from './actualizarProducto/ActualizarProducto'
+// import EliminarProducto from './eliminarProducto/EliminarProducto'
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 function ListadoProductos(props) {
+  const [productos, setProductos] = useState([]);
 
-  function getListadoProductos(){
-    let   ListadoProductosFiltrado=[]
-    //if (  ( props.filtroNombre!="" && props.filtroStock!="")  
-    //if(ListadoProductos[i].nombre.includes(props.filtroNombre)){
-    console.log("props filtros:");console.log(props.filtroNombre);console.log(props.filtroStock)
+ useEffect(() => {
+  fetchData();
+}, []);
+
+  const fetchData = async () => {
+    const response = await axios.get(
+      "http://127.0.0.1:8000/getListadoProductos"
+    );
+    setProductos(response.data.datax);  console.log("response.data.datax",response.data.datax);console.log("hook pzroductos:",productos)
     
+    console.log("props filtros:");console.log(props);console.log(props.paginacion);console.log(props.filtroNombre);console.log(props.filtroStock);   console.log("paginacion:");console.log(props.filtroActivo);
+    
+    let ListadoProductosFiltrado =[]
     if (props.filtroActivo==1){
-      for (let i=0;(i<ListadoProductosJson.length);i++){
-        if(ListadoProductosJson[i].nombre.includes(props.filtroNombre)){
-          ListadoProductosFiltrado.push(ListadoProductosJson[i])
+      for (let i=0;(i<response.data.datax.length);i++){
+        if(response.data.datax[i].nombre.includes(props.filtroNombre)){
+          ListadoProductosFiltrado.push(response.data.datax[i])
         }
       }
     }else{
-      for (let i=0;(i<ListadoProductosJson.length);i++){
-          ListadoProductosFiltrado.push(ListadoProductosJson[i])
+      for (let i=0;(i<response.data.datax.length);i++){
+          ListadoProductosFiltrado.push(response.data.datax[i])
       }
     }
-
-
-    console.log("L PRODUCTS FILTR");console.log(ListadoProductosFiltrado)
-
-    let inicioI=(props.paginacion-1)*10
-    let finalI=(props.paginacion*10)
- 
-    
-    let productos = [];
-    for (  let i=inicioI; ((i< ListadoProductosFiltrado.length)  && (i <finalI)   ) ;i++){
-      productos.push(  
-      <tr>
-        <td>{i+1}</td>
-        <td>{ListadoProductosFiltrado[i].nombre}</td>
-        <td>{ListadoProductosFiltrado[i].stock}</td>
-        <td><DetalleProducto></DetalleProducto></td> {/*Aqui debo usar props*/}
-        <td><ActualizarProducto></ActualizarProducto></td>
-        <td><EliminarProducto></EliminarProducto></td>
-     </tr>)
-    }
-    return(
-      productos
-    );
-  }
+    console.log("L PRODUCTS FILTR");console.log(ListadoProductosFiltrado)  
+    setProductos( ListadoProductosFiltrado); 
+  };
 
   return (
     <tbody>
-      {getListadoProductos()}
+      {productos.map((item) => (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.stock}</td>
+                <td><DetalleProducto></DetalleProducto></td>
+                <td><ActualizarProducto></ActualizarProducto></td>
+                <td><EliminarProducto></EliminarProducto></td>
+            </tr>
+     ))}
     </tbody>
   );
 }

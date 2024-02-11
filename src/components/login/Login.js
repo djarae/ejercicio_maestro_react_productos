@@ -30,9 +30,11 @@ function Login() {
             console.log("funciona! l RESPONSE ES ");
             console.log(response);
             var auxLimiteFiltro=0//Se utiliza asi para que sea integer
+            var auxPaginacion=1
             localStorage.setItem("usuarioActivo",true)
             localStorage.setItem("nombre","Diego")
             localStorage.setItem("limiteFiltros",auxLimiteFiltro)
+            localStorage.setItem("paginacion",auxPaginacion)
             var values = response.data
             console.log("values de response");console.log(values)
             alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))

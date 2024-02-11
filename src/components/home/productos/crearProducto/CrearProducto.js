@@ -1,13 +1,21 @@
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import React, { useState } from 'react';
+//Imports de archivos (Re-Utilizables en VUE Y ANGULAR)
 import getNextProducto from "./HTTP/GetNextProducto";
 import insertarProducto from "./HTTP/InsertarProducto";
 
+//Imports Exclusivos de React
+import React, { useState } from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+
+
 function CrearProducto() {
+  //Declaracion HOOKS EXCLUSIVAS para REACT
   const [hookTxtNProducto, setHookTxtNProducto] = useState('');
   const [hookTxtDProducto, setHookTxtDProducto] = useState('');
   const [hookTxtSProducto, setHookTxtSProducto] = useState('');
+
+  //Funciones EXCLUSIVAS para REACT
   const handleChangeNProducto = event => {
       setHookTxtNProducto(event.target.value);
       console.log("valor user ");
@@ -24,7 +32,9 @@ function CrearProducto() {
       console.log(hookTxtSProducto);
     };
 
-  const   CrearProducto =   async event => {
+
+  //Funciones Semi-Re-Utilizables en VUE y ANGULAR  
+  const CrearProducto = async event => {
       // console.log("NOMBRE PRODUCTO: ");console.log(hookTxtNProducto); console.log("DETALLE PRODUCTO: ");console.log(hookTxtDProducto);console.log("STOCK PRODUCTO: ");console.log(hookTxtSProducto);
       let idNextProducto = await getNextProducto();
       // console.log("id next  p");console.log(idNextProducto)
@@ -39,7 +49,6 @@ function CrearProducto() {
           {<button> Crear Producto </button>}
           position="right center">  
           <div>Crear Producto</div>
-
           <p>Nombre</p>
           <input
               type="text"

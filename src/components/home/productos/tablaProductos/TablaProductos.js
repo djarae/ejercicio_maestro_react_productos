@@ -1,54 +1,108 @@
 import 'reactjs-popup/dist/index.css';
-import React, { useState, useEffect } from 'react';
-import ListadoProductos from './listadoProductos/ListadoProductos.js'
+import React, { useState, useEffect,useReducer } from 'react';
+import axios from "axios";
+import Popup from 'reactjs-popup';
+
+// import ListadoProductos from './listadoProductos/ListadoProductos.js'
 
 function TablaProductos() {
+  
     const [Paginacion, setPaginacion] = useState(1);
     const [filtroActivo, setFiltroActivo] = useState(0);
     const [hookFiltroNProducto, setHookFiltroNProducto] = useState('');
     const [hookFiltroSProducto, setHookFiltroSProducto] = useState('');
+    const [productos, setProductos] = useState([]);
+
+    const [count, setCount] = useState([0]);
+
+    const [, updateState] = React.useState();
+  
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+
+  function handleClick() {
+    forceUpdate();
+  }
+
+    useEffect(() => {
+      let auxNumber = 1
+      localStorage.setItem("paginacion",auxNumber) 
+      fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        
+        const response = await axios.get(
+          "http://127.0.0.1:8000/getListadoProductos?nombreProd='"+hookFiltroNProducto+"'&stockProd='"+hookFiltroSProducto+"'"+"&paginacion='"+localStorage.getItem("paginacion")+"'",{withCredentials: true }
+        ) 
+        console.log("paginacion");console.log(localStorage.getItem("paginacion"));
+        let ListadoProductosFiltrado =[]
+        for (let i=0;(i<response.data.datax.length);i++){
+              ListadoProductosFiltrado.push(response.data.datax[i])
+        }
+        console.log("response es ",response)
+        setProductos( ListadoProductosFiltrado); 
+      };
+
+
 
     function paginaMenos (){
-      if (Paginacion>1){
-        setPaginacion(Paginacion-1)  
+      var intPaginacion = parseInt(localStorage.getItem("paginacion"));
+      if ( intPaginacion>1){
+        let auxNumber =1
+        console.log("aqui llega bien")
+        localStorage.setItem("paginacion",intPaginacion-auxNumber) 
+        fetchData();
+        let auxPag=Paginacion;
+        auxPag=auxPag-1;
+        setPaginacion(auxPag) 
       }
       return 0;
     }
-
     function paginaMas (){
-      setPaginacion(Paginacion+1)  
+      var intPaginacion = parseInt(localStorage.getItem("paginacion"));
+      let auxNumber   =1
+      localStorage.setItem("paginacion",intPaginacion+auxNumber)  
+      fetchData(); 
+      let auxPag=Paginacion;
+      auxPag=auxPag+1;
+      setPaginacion(auxPag)  
+      fetchData(); 
       return 0;
     }
 
     const changeFiltroNProducto = event => {
       setHookFiltroNProducto(event.target.value);
       setFiltroActivo(0)
-      //Nota: Se cambia "FiltroActivo" a 0 , ya que para poder establecer un "limite 
-      //maximo de 5 filtrados hacia falta que existiese un boton y que sea por medio de boton"
     };
-
     const changeFiltroSProducto = event => {
       setHookFiltroSProducto(event.target.value);
       setFiltroActivo(0)
-
     };
 
-    function activarFiltros (){
-      setFiltroActivo(1)
-      var intLFiltro = parseInt(  localStorage.getItem("limiteFiltros"));
+
+   async function activarFiltros (){
+      var intLFiltro = parseInt(localStorage.getItem("limiteFiltros"));
       var auxLFiltro = intLFiltro+1
       localStorage.setItem("limiteFiltros",auxLFiltro)
-      console.log("Limite filtros");console.log(localStorage.getItem("limiteFiltros"))
-      if (auxLFiltro>4){
-        setFiltroActivo(0)
-        alert("Limite de 5 filtros por sesión alcanzado.")
-      }
+      // if (intLFiltro>4){
+      //   alert("limite de  por usuario y sesion alcanzados")
+      //   setHookFiltroNProducto("")
+      //   setHookFiltroSProducto("")
+      // }else{
+        setFiltroActivo(1)
+        fetchData();
+        handleClick();
+      // }
     }
+
 
     function desactivarFiltros (){
       setFiltroActivo(0)
+      setHookFiltroNProducto("");
+      setHookFiltroSProducto("");
+      fetchData();
+      handleClick();
     }
-
 
     return (
     <div class="container justify-content-center">
@@ -57,7 +111,8 @@ function TablaProductos() {
           <thead class="thead-light"> 
             <tr>
                 <th>
-                  <button onClick={activarFiltros}>Filtrar</button>
+                <button onClick={activarFiltros}>Filtrar</button>
+                  
                 </th>
                 <th scope="col"> 
                           <input type="text" id="txtFiltroNProducto" name="hookFiltroNProducto" onChange={changeFiltroNProducto} value={hookFiltroNProducto}/>
@@ -67,9 +122,6 @@ function TablaProductos() {
                           <input type="text" id="txtFiltroSProducto" name="hookFiltroSProducto" onChange={changeFiltroSProducto} value={hookFiltroSProducto}/>
                           {/* <h2>: {hookFiltroSProducto}</h2> */}
                 </th>
-                <th>
-                  <button onClick={desactivarFiltros}>Retirar Filtro</button>
-                </th>
             </tr>
             <tr>
              <th scope="col">#</th>
@@ -77,7 +129,19 @@ function TablaProductos() {
              <th scope="col">Stock</th>
             </tr>
           </thead>
-          <ListadoProductos paginacion={Paginacion} filtroNombre={hookFiltroNProducto} filtroStock={hookFiltroSProducto} filtroActivo={filtroActivo}></ListadoProductos>
+            {/* <ListadoProductos paginacion={Paginacion} filtroNombre={hookFiltroNProducto} filtroStock={hookFiltroSProducto} filtroActivo={filtroActivo}></ListadoProductos> */}
+          <tbody>
+            {productos.map((item) => (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.stock}</td>
+                {/* <td><DetalleProducto></DetalleProducto></td>
+                <td><ActualizarProducto></ActualizarProducto></td>
+                <td><EliminarProducto></EliminarProducto></td> */}
+            </tr>
+            ))}
+          </tbody>
         </table>
         <div>
           <tr>

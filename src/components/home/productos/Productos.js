@@ -6,7 +6,8 @@ function Productos() {
   //JSX
     return (
       <div className="App">
-            <h4> CRUD Mantenedor Productos</h4>
+            <h5> CRUD Mantenedor Productos.</h5>
+            <h6> Doble Click para filtrar, retirar filtro y actualizar listado.</h6>
             <TablaProductos></TablaProductos>
             <CrearProducto></CrearProducto>
       </div>
