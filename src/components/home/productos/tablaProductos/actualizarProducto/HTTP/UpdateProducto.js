@@ -3,17 +3,19 @@ import axios from "axios";
          //Leemos el ultimo producto para agregar como ID el sgte
          console.log("UPDATE: id , nombre, detalle, stpcl");console.log(id);console.log(nombre);;console.log(detalle);console.log(stock)
          let values
-         await axios.post("http://127.0.0.1:8000/updateProducto?id='"+id+"'&nombre='"+nombre+"'&detalle='"+detalle+"'&stock='"+stock+"'",{withCredentials: true })
+         await axios.put("http://127.0.0.1:8000/updateProducto?id='"+id+"'&nombre='"+nombre+"'&detalle='"+detalle+"'&stock='"+stock+"'",{withCredentials: true })
          .then(function (response) {
              values = response.data
              console.log("values de response");console.log(values)
              alert( "update EL PROD")
+            window.location.href = window.location.href;
          })
          .catch(function (error) {
              // handle error
              console.log("no funciona!");
              console.log(error);
          })
+
         return 0;
   }
 

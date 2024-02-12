@@ -1,6 +1,8 @@
 import './Login.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import CrearUsuario from './registrarse/Registrarse.js'
+
 function Login() {
   const [hookTxtUsuario, setHookTxtUsuario] = useState('');
   const [hookTxtContrasena, setHookTxtContrasena] = useState('');
@@ -99,9 +101,7 @@ function Login() {
          <button onClick={iniciarSesion}>
             Ingresar 
          </button>
-         <button onClick={crearUsuario}>
-            Crear Usuario 
-         </button>
+            <CrearUsuario ></CrearUsuario>
         </body>
       </div>
     );

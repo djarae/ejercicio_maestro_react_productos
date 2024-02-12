@@ -18,17 +18,17 @@ function CrearProducto() {
   //Funciones EXCLUSIVAS para REACT
   const handleChangeNProducto = event => {
       setHookTxtNProducto(event.target.value);
-      console.log("valor user ");
+      console.log("valor product ");
       console.log(hookTxtNProducto);
     };
   const handleChangeDProducto = event => {
       setHookTxtDProducto(event.target.value);
-      console.log("valor user ");
+      console.log("valor detalle ");
       console.log(hookTxtDProducto);
     };
   const handleChangeSProducto = event => {
       setHookTxtSProducto(event.target.value);
-      console.log("valor user ");
+      console.log("valor stocoik ");
       console.log(hookTxtSProducto);
     };
 
@@ -44,7 +44,6 @@ function CrearProducto() {
 
     return (
       <div>
-       <h4>Crear Producto</h4>
        <Popup trigger=
           {<button> Crear Producto </button>}
           position="right center">  

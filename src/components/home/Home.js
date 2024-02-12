@@ -15,12 +15,9 @@ function Home() {
       <div className="App">
         <header className="App-header">
           <div>
-            {/* <h3>HOME</h3> */}
             <Productos></Productos> 
             {/* <Usuarios></Usuarios>  */}
-            <button onClick={cerrarSesion}>
-             Cerrar Sesion 
-            </button>
+            <button onClick={cerrarSesion}> Cerrar Sesion </button>
           </div >
         </header>
       </div>
