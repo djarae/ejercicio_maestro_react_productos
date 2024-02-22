@@ -6,7 +6,7 @@ function Productos() {
   //JSX
     return (
       <div>
-            <h3> CRUD Mantenedor Productos.</h3>
+            CRUD Mantenedor Productos.
             <CrearProducto></CrearProducto>
             <TablaProductos></TablaProductos>
       </div>
