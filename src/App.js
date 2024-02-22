@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import './App.css';
 import Login from './components/login/Login.js';
 import Home from './components/home/Home.js';
 function App() {

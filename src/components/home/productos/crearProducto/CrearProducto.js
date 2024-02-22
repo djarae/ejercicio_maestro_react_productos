@@ -1,6 +1,7 @@
 //Imports de archivos (Re-Utilizables en VUE Y ANGULAR)
-import getNextProducto from "./HTTP/GetNextProducto";
-import insertarProducto from "./HTTP/InsertarProducto";
+
+import getNextProducto from  "../../../../HTTP/crearProducto/GetNextProducto";
+import insertarProducto from  "../../../../HTTP/crearProducto/InsertarProducto";
 
 //Imports Exclusivos de React
 import React, { useState } from 'react';
@@ -48,6 +49,8 @@ function CrearProducto() {
           {<button> Crear Producto </button>}
           position="right center">  
           <div>Crear Producto</div>
+          <p>Crear nuevo Prudcot</p>
+
           <p>Nombre</p>
           <input
               type="text"
@@ -56,7 +59,6 @@ function CrearProducto() {
               onChange={handleChangeNProducto}
               value={hookTxtNProducto}
           />
-          <h2>Message: {hookTxtNProducto}</h2>
 
           <p>Detalle</p>
           <input
@@ -66,7 +68,6 @@ function CrearProducto() {
               onChange={handleChangeDProducto}
               value={hookTxtDProducto}
           />
-          <h2>Message: {hookTxtDProducto}</h2>
 
           <p>Stock</p>
           <input
@@ -76,7 +77,6 @@ function CrearProducto() {
               onChange={handleChangeSProducto}
               value={hookTxtSProducto}
           />
-          <h2>Message: {hookTxtSProducto}</h2>
           <button onClick={CrearProducto}>Crear</button>
        </Popup>
       </div>

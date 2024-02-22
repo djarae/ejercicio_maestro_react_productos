@@ -1,4 +1,3 @@
-import './Login.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import CrearUsuario from './registrarse/Registrarse.js'
@@ -34,7 +33,7 @@ function Login() {
             var auxLimiteFiltro=0//Se utiliza asi para que sea integer
             var auxPaginacion=1
             localStorage.setItem("usuarioActivo",true)
-            localStorage.setItem("nombre","Diego")
+            localStorage.setItem("nombre","Diego")//Debo agregar sesion del usuario activo
             localStorage.setItem("limiteFiltros",auxLimiteFiltro)
             localStorage.setItem("paginacion",auxPaginacion)
             var values = response.data
