@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CrearUsuario from './registrarse/Registrarse.js'
+import './Login.css';
 
 function Login() {
   const [hookTxtUsuario, setHookTxtUsuario] = useState('');
@@ -11,13 +12,11 @@ function Login() {
       console.log("valor user ");
       console.log(hookTxtUsuario);
     };
-  
     const handleChangeContrasena = event => {
       setHookTxtContrasena(event.target.value);
       console.log("valor contr ");
       console.log(hookTxtContrasena);
     };
-
     function iniciarSesion (){
         let usuarioAuxiliar =''//De esta forma hacemos que el hook se considere STRING
         let contrasenaAuxiliar =''
@@ -55,52 +54,19 @@ function Login() {
         return 0;
       }
 
-    function crearUsuario (){
-        return 0;
-      }  
-
     return (
       <div className="App">
-        <header className="App-header">
-         <div >
+        {/* <header className="App-header">
           <h1>
            !Bienvenidos a Negring!
           </h1>
-          <p>
-           Desarrolla esta plataforma a la perfeccion
-          </p>
-         </div >
-        </header>
+        </header> */}
         <body className="App-body">
-         <h1>
-          Iniciar sesion
-         </h1>
-       <div>
-        <input
-          type="text"
-          id="txtUsuario"
-          name="hookTxtUsuario"
-          onChange={handleChangeUsuario}
-          value={hookTxtUsuario}
-        />
-        {/* <h2>Message: {hookTxtUsuario}</h2> */}
-      </div>
-
-      <div>
-        <input
-          type="text"
-          id="txtContrasena"
-          name="hookTxtContrasena"
-          onChange={handleChangeContrasena}
-          value={hookTxtContrasena}
-        />
-        {/* <h2>Message: {hookTxtContrasena}</h2> */}
-      </div>
-
-         <button onClick={iniciarSesion}>
-            Ingresar 
-         </button>
-            <CrearUsuario ></CrearUsuario>
+          <h1>Iniciar sesion</h1>
+          <input type="text" id="txtUsuario" name="hookTxtUsuario" onChange={handleChangeUsuario} value={hookTxtUsuario}/>
+          <input type="text" id="txtContrasena"  name="hookTxtContrasena" onChange={handleChangeContrasena} value={hookTxtContrasena} />
+          <button onClick={iniciarSesion}> Ingresar  </button>
+          <CrearUsuario ></CrearUsuario>
         </body>
       </div>
     );

@@ -13,13 +13,12 @@ function Home() {
 
     return (
       <div className="App">
-        <header className="App-header">
+        <body className="App-body">
           <div>
             <Productos></Productos> 
-            {/* <Usuarios></Usuarios>  */}
             <button onClick={cerrarSesion}> Cerrar Sesion </button>
           </div >
-        </header>
+        </body>
       </div>
     );
   }
