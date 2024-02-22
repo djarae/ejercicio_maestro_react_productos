@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import Login from './components/login/Login.js';
 import Home from './components/home/Home.js';
+import './App.css';
+
 function App() {
   const [hookUsuarioActivo, setHookUsuarioActivo] = useState(null);
   useEffect(() => {
