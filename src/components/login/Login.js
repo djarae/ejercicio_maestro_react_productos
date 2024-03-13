@@ -56,11 +56,6 @@ function Login() {
 
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <h1>
-           !Bienvenidos a Negring!
-          </h1>
-        </header> */}
         <body className="App-body">
           <h1>Iniciar sesion</h1>
           <input type="text" id="txtUsuario" name="hookTxtUsuario" onChange={handleChangeUsuario} value={hookTxtUsuario}/>

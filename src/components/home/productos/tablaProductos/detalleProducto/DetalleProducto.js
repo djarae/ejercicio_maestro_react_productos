@@ -1,7 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, { useState } from 'react';
-import detailProducto from './HTTP/DetailProducto';
+import detailProducto from  "../../../../../HTTP/producto/detalleProducto/DetailProducto";
 
 
 function DetalleProducto(props) {

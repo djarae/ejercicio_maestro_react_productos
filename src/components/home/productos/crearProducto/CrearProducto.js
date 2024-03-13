@@ -1,7 +1,7 @@
 //Imports de archivos (Re-Utilizables en VUE Y ANGULAR)
 
-import getNextProducto from  "../../../../HTTP/crearProducto/GetNextProducto";
-import insertarProducto from  "../../../../HTTP/crearProducto/InsertarProducto";
+import getNextProducto from  "../../../../HTTP/producto/crearProducto/GetNextProducto";
+import insertarProducto from  "../../../../HTTP/producto/crearProducto/InsertarProducto";
 
 //Imports Exclusivos de React
 import React, { useState } from 'react';

@@ -1,7 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, { useState } from 'react';
-import deleteProducto from './HTTP/DeleteProducto';
+import deleteProducto from  "../../../../../HTTP/producto/deleteProducto/DeleteProducto";
 
 function EliminarProducto(props) {
   const DeleteProducto = async event => {

@@ -1,9 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, { useState } from 'react';
-import updateProducto from "./HTTP/UpdateProducto";
-
-
+import updateProducto from  "../../../../../HTTP/producto/updateProducto/UpdateProducto";
 
 function ActualizarProducto(props) {
   const [hookTxtNProducto, setHookTxtNProducto] = useState('');
