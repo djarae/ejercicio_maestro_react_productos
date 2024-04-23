@@ -1,6 +1,10 @@
 //Imports de archivos (Re-Utilizables en VUE Y ANGULAR)
-import getNextUsuario from "./HTTP/GetNextUsuario";
-import insertarUsuario from "./HTTP/InsertarUsuario";
+//import getNextUsuario from "./HTTP/GetNextUsuario";
+// import insertarUsuario from "./HTTP/InsertarUsuario";
+
+import getNextUsuario from "../../../HTTP/login/registrarse/GetNextUsuario";
+import insertarUsuario from "../../../HTTP/login/registrarse/InsertarUsuario";
+
 //Imports Exclusivos de React
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';

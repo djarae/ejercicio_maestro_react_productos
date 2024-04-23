@@ -1,15 +1,12 @@
 //Imports de archivos (Re-Utilizables en VUE Y ANGULAR)
-import axios from "axios";
-import getNextUsuario from "../registrarse/HTTP/GetNextUsuario";
-import insertarUsuario from "../registrarse/HTTP/InsertarUsuario";
-//Imports Exclusivos de React
 import React, { useState } from 'react';
 import 'reactjs-popup/dist/index.css';
+import UsuarioExiste from "../../../HTTP/login/iniciarSesion/UsuarioExiste"
+import axios from "axios";
 
 function IniciarSesion() {
     const [hookTxtUsuario, setHookTxtUsuario] = useState('');
     const [hookTxtContrasena, setHookTxtContrasena] = useState('');
-
     const handleChangeUsuario = event => {
       setHookTxtUsuario(event.target.value);
       console.log("valor user ");
@@ -21,38 +18,35 @@ function IniciarSesion() {
       console.log(hookTxtContrasena);
     };
     function iniciarSesionFunc (){
-        let usuarioAuxiliar =''//De esta forma hacemos que el hook se considere STRING
-        let contrasenaAuxiliar =''
+        let usuarioAuxiliar ='' ;let contrasenaAuxiliar =''
         usuarioAuxiliar=hookTxtUsuario;
         contrasenaAuxiliar=hookTxtContrasena;
-
+        UsuarioExiste(usuarioAuxiliar,contrasenaAuxiliar);
         //CUIDADO CON LA ASINCRONIA AQUI ,SE CIERRA LA FUNCION ANTES DE TERMINAR
-        axios.get("http://127.0.0.1:8000/login?nombre='"+usuarioAuxiliar+"'&contrasena='"+contrasenaAuxiliar+"'", { withCredentials: true })
-        .then(function (response) {
-            // handle success
-            console.log("funciona! l RESPONSE ES ");
-            console.log(response);
-            var auxLimiteFiltro=0//Se utiliza asi para que sea integer
-            var auxPaginacion=1
-            localStorage.setItem("usuarioActivo",true)
-            localStorage.setItem("nombre","Diego")//Debo agregar sesion del usuario activo
-            localStorage.setItem("limiteFiltros",auxLimiteFiltro)
-            localStorage.setItem("paginacion",auxPaginacion)
-            var values = response.data
-            console.log("values de response");console.log(values)
-            alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
-          
-            window.location.href = window.location.href;
-        })
-        .catch(function (error) {
-            // handle error
-            console.log("no funciona!");
-            console.log(error);
-            console.log("Usuario no encontrado desde js");
-        })
-        .then(function (response) {
-          console.log("Esto es then");
-        });
+        // axios.get("http://127.0.0.1:8000/login?nombre='"+usuarioAuxiliar+"'&contrasena='"+contrasenaAuxiliar+"'", { withCredentials: true })
+        // .then(function (response) {
+        //     // handle success
+        //     console.log("funciona! l RESPONSE ES ");
+        //     console.log(response);
+        //     var auxLimiteFiltro=0//Se utiliza asi para que sea integer
+        //     var auxPaginacion=1
+        //     var values = response.data
+        //     console.log("values de response");console.log(values)
+            
+        //     if (values==true){
+        //     localStorage.setItem("usuarioActivo",true)
+        //     localStorage.setItem("nombre","Diego")//Debo agregar sesion del usuario activo
+        //     localStorage.setItem("limiteFiltros",auxLimiteFiltro)
+        //     localStorage.setItem("paginacion",auxPaginacion)
+        //     alert( "Se ha iniciado sesion de:" + localStorage.getItem("nombre") + ". Usuario activo es " +  localStorage.getItem("usuarioActivo"))
+        //   }else{
+        //     alert( "Nombre o password incorrecto");
+        //   }
+            
+        //     window.location.href = window.location.href;
+        // })
+        
+        
       
         return 0;
     }
