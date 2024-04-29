@@ -59,9 +59,6 @@ function Login() {
       <div className="App">
         <body className="App-body">
           <h1>Iniciar sesion</h1>
-          {/* <input type="text" id="txtUsuario" name="hookTxtUsuario" onChange={handleChangeUsuario} value={hookTxtUsuario}/>
-          <input type="text" id="txtContrasena"  name="hookTxtContrasena" onChange={handleChangeContrasena} value={hookTxtContrasena} />
-          <button onClick={iniciarSesion}> Ingresar  </button> */}
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
         </body>
