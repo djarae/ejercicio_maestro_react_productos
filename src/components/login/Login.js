@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import IniciarSesion from './iniciarSesion/IniciarSesion.js'
 import CrearUsuario from './registrarse/Registrarse.js'
 import './Login.css';
+import { Button } from "bootstrap";
 
 function Login() {
   // const [hookTxtUsuario, setHookTxtUsuario] = useState('');
@@ -55,12 +56,23 @@ function Login() {
     //     return 0;
     //   }
 
+
+    function probarApiNew (){
+      axios.get("http://127.0.0.1:8000/products", { withCredentials: true })
+      .then(function (response) {
+        console.log(response);
+      })
+    
+      return 0;
+  }
+
     return (
       <div className="App">
         <body className="App-body">
           <h1>Iniciar sesion</h1>
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
+          <button onClick={probarApiNew}> Probar  </button>
         </body>
       </div>
     );

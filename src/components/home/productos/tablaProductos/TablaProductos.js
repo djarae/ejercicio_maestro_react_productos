@@ -26,6 +26,8 @@ function TablaProductos() {
     }, []);
 
     const fetchData = async () => {
+      console.log("URL ES ");
+      console.log("http://127.0.0.1:8000/getListadoProductos?nombreProd='"+hookFiltroNProducto+"'&stockProd='"+hookFiltroSProducto+"'"+"&paginacion='"+localStorage.getItem("paginacion")+"'")
         const response = await axios.get(
           "http://127.0.0.1:8000/getListadoProductos?nombreProd='"+hookFiltroNProducto+"'&stockProd='"+hookFiltroSProducto+"'"+"&paginacion='"+localStorage.getItem("paginacion")+"'",{withCredentials: true }
         ) 
