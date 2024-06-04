@@ -57,14 +57,24 @@ function Login() {
     //   }
 
 
-    function probarApiNew (){
+    function probarApiNewLaravel (){
       axios.get("http://127.0.0.1:8000/products", { withCredentials: true })
       .then(function (response) {
         console.log(response);
       })
     
       return 0;
-  }
+    }
+
+
+    function probarApiNewSpringboot (){
+      axios.get("http://127.0.0.1:8000/products", { withCredentials: true })
+      .then(function (response) {
+        console.log(response);
+      })
+    
+      return 0;
+    }
 
     return (
       <div className="App">
@@ -72,7 +82,9 @@ function Login() {
           <h1>Iniciar sesion</h1>
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
-          <button onClick={probarApiNew}> ProbarLaravel  </button>
+          <button onClick={probarApiNewLaravel}> ProbarLaravel  </button>
+          <button onClick={probarApiNewSpringboot}> ProbarLaravel  </button>
+     
         </body>
       </div>
     );
