@@ -72,7 +72,7 @@ function Login() {
           <h1>Iniciar sesion</h1>
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
-          <button onClick={probarApiNew}> Probar  </button>
+          <button onClick={probarApiNew}> ProbarLaravel  </button>
         </body>
       </div>
     );
