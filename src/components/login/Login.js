@@ -58,6 +58,8 @@ function Login() {
 
 
     function probarApiNewLaravel (){
+
+      
       axios.get("http://127.0.0.1:8000/products", { withCredentials: true })
       .then(function (response) {
         console.log(response);
@@ -67,13 +69,21 @@ function Login() {
     }
 
 
-    function probarApiNewSpringboot (){
+   async function probarApiNewSpringboot (){
       console.log("boton springboot");
-      axios.get("http://127.0.0.1:8080", { withCredentials: true })
-      .then(function (response) {
-        console.log(response);
-      })
-    
+      // axios.get("http://127.0.0.1:8080/api/v1/democors", { withCredentials: true })
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+
+      // fetch('http://127.0.0.1:8080/api/v1/democors')
+      // .then(
+      // response=>response.text(console.log(response)))
+
+      const response = await fetch('http://127.0.0.1:8080/api/v1/democors');
+      const body = await response.text();
+
+      console.log(body);
       return 0;
     }
 
