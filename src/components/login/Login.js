@@ -68,7 +68,8 @@ function Login() {
 
 
     function probarApiNewSpringboot (){
-      axios.get("http://127.0.0.1:8000/products", { withCredentials: true })
+      console.log("boton springboot");
+      axios.get("http://127.0.0.1:8080", { withCredentials: true })
       .then(function (response) {
         console.log(response);
       })
@@ -83,7 +84,7 @@ function Login() {
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
           <button onClick={probarApiNewLaravel}> ProbarLaravel  </button>
-          <button onClick={probarApiNewSpringboot}> ProbarLaravel  </button>
+          <button onClick={probarApiNewSpringboot}> ProbarSpringboot  </button>
      
         </body>
       </div>
