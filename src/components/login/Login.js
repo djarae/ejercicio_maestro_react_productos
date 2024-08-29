@@ -71,21 +71,23 @@ function Login() {
 
    async function probarApiNewSpringboot (){
       console.log("boton springboot");
-      // axios.get("http://127.0.0.1:8080/api/v1/democors", { withCredentials: true })
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-
-      // fetch('http://127.0.0.1:8080/api/v1/democors')
-      // .then(
-      // response=>response.text(console.log(response)))
-
       const response = await fetch('http://127.0.0.1:8080/api/v1/democors');
       const body = await response.text();
 
       console.log(body);
       return 0;
     }
+
+
+    
+   async function probarApiNewAspNet (){
+    console.log("boton aspnet");
+    const response = await fetch('https://localhost:7032/weatherforecast');
+    const body = await response.text();
+
+    console.log(body);
+    return 0;
+  }
 
     return (
       <div className="App">
@@ -95,6 +97,7 @@ function Login() {
           <CrearUsuario ></CrearUsuario>
           <button onClick={probarApiNewLaravel}> ProbarLaravel  </button>
           <button onClick={probarApiNewSpringboot}> ProbarSpringboot  </button>
+          <button onClick={probarApiNewAspNet}> probarApiNewAspNet  </button>
      
         </body>
       </div>
