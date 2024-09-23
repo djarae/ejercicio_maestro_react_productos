@@ -6,6 +6,14 @@ import './Login.css';
 import { Button } from "bootstrap";
 
 function Login() {
+
+  const [ form, setForm ] = useState({title: 'TITULO TEST',
+    description: 'DESC TEST',
+    img: 'IMG',
+    leftColor: 'A',
+    rightColor: 'B'
+})
+
   // const [hookTxtUsuario, setHookTxtUsuario] = useState('');
   // const [hookTxtContrasena, setHookTxtContrasena] = useState('');
 
@@ -89,6 +97,82 @@ function Login() {
     return 0;
   }
 
+
+
+  async function probarApiNewAspNetMatchups (){
+    console.log("boton aspnet");
+    // const response = await fetch('http://localhost:5208/weatherforecast');
+    const response = await fetch('http://localhost:5208/api/matchup');
+
+    const body = await response.text();
+
+    console.log(body);
+    return 0;
+  }
+
+  
+  async function probarApiNewAspNetMatchups2 (){
+    console.log("aaaa")
+
+    //nOTA ESTO ES OMCPATIBLE CON EL EJERCICIO REPOSITORIO netcore_youtube_ejercicio
+    const response = await fetch('http://localhost:5198/cliente/listar?idCliente=8');
+    const body = await response.text();
+
+    console.log(body);
+    return 0;
+  }
+
+
+  const probarApiNewRails = async e => {
+    const url = 'http://127.0.0.1:3000/api/v1/articles';
+    const test = {
+   "title": "new article",
+    "body": "dddd",
+    "author": "elpepe"
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RapidAPI-Key': 'your-api-key',
+        'X-RapidAPI-Host': 'test-by-api-ninjas.p.rapidapi.com',
+      },
+      body: JSON.stringify(test)
+    };
+    fetch(url, options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+      console.log("FinInicio")
+    
+  }
+
+
+  const handleSubmit = async e => {
+  const url = 'http://localhost:5198/cliente/guardar';
+  const test = {
+  "id": "1",
+  "nombre": "pedro",
+  "edad": "33",
+  "correo": "dd"
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-RapidAPI-Key': 'your-api-key',
+      'X-RapidAPI-Host': 'test-by-api-ninjas.p.rapidapi.com',
+    },
+    body: JSON.stringify(test)
+  };
+  fetch(url, options)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+    console.log("FinInicio")
+  
+}
+
     return (
       <div className="App">
         <body className="App-body">
@@ -98,7 +182,10 @@ function Login() {
           <button onClick={probarApiNewLaravel}> ProbarLaravel  </button>
           <button onClick={probarApiNewSpringboot}> ProbarSpringboot  </button>
           <button onClick={probarApiNewAspNet}> probarApiNewAspNet  </button>
-     
+          <button onClick={probarApiNewAspNetMatchups}> probarApiNewAspNetMatchups  </button>
+          <button onClick={probarApiNewAspNetMatchups2}> probarApiNewAspNetMatchups2  </button>
+          <button onClick={handleSubmit}> handleSubmit  </button>
+          <button onClick={probarApiNewRails}>probarApiNewRails</button>
         </body>
       </div>
     );
