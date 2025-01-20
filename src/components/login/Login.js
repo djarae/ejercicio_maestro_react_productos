@@ -148,6 +148,29 @@ function Login() {
   }
 
 
+  const probarApiLaravelPOST = async e => {
+    const url = 'http://127.0.0.1:8000/products';
+    const test ={
+      "name":"Andres",
+      "age":"26"
+      }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RapidAPI-Key': 'your-api-key',
+        'X-RapidAPI-Host': 'test-by-api-ninjas.p.rapidapi.com',
+      },
+      body: JSON.stringify(test)
+    };
+    fetch(url, options)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+      console.log("FinInicio")
+    
+  }
+
   const handleSubmit = async e => {
   const url = 'http://localhost:5198/cliente/guardar';
   const test = {
@@ -179,13 +202,15 @@ function Login() {
           <h1>Iniciar sesion</h1>
           <IniciarSesion></IniciarSesion>
           <CrearUsuario ></CrearUsuario>
-          <button onClick={probarApiNewLaravel}> ProbarLaravel  </button>
+          <button onClick={probarApiNewLaravel}> ProbarLaravel- controladores y rutas  </button>
           <button onClick={probarApiNewSpringboot}> ProbarSpringboot  </button>
           <button onClick={probarApiNewAspNet}> probarApiNewAspNet  </button>
           <button onClick={probarApiNewAspNetMatchups}> probarApiNewAspNetMatchups  </button>
           <button onClick={probarApiNewAspNetMatchups2}> probarApiNewAspNetMatchups2  </button>
           <button onClick={handleSubmit}> handleSubmit  </button>
           <button onClick={probarApiNewRails}>probarApiNewRails</button>
+          <button onClick={probarApiLaravelPOST}>probarApiLaravelControladorPOST</button>
+
         </body>
       </div>
     );
